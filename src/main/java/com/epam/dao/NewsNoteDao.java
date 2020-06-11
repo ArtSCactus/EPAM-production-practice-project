@@ -5,6 +5,7 @@ import com.epam.repository.NewsNotesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,6 +24,13 @@ public class NewsNoteDao {
 
     public List<NewsNote> getAll(){
         return repository.findAll();
+    }
+
+    public List<NewsNote> getAllSorted(Comparator<NewsNote> comparator){
+        List<NewsNote> notes = repository.findAll();
+        notes.sort(comparator
+        );
+        return notes;
     }
 
     public void save(NewsNote note){

@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.epam</groupId>
 	<artifactId>news-manager-api</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 	<name>News manager</name>
 	<description>A news manager application</description>
 	<packaging>jar</packaging>

@@ -1,0 +1,30 @@
+/*
+* Created by ArtSCactus
+* 10.06.2020
+*/
+
+.news-note-title, .news-note-date {
+    display: inline;
+}
+
+.news-note-date, .news-note-edit-view-links {
+    float: right;
+}
+
+.news-note-content {
+    margin-top: 30px;
+}
+
+.news-note, #delete-btn {
+    display: block;
+}
+
+#delete-btn {
+    float: right;
+    margin-left: 90%;
+    margin-top: 30px;
+}
+
+.news-note {
+    margin-top: 30px;
+}

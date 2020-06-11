@@ -3,55 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>News manager</title>
-    <link rel="stylesheet" href="style.css" >
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="news-list.css">
 </head>
-<header>
-    <div id="page-title">
-        News management
-    </div>
-    <div id="localization-links">
-        <a href="">English</a>
-        <a href="">Russian</a>
-    </div>
-</header>
+<div th:replace="fragments/general.html :: header">
+</div>
+<div th:replace="fragments/general.html :: sidebar"></div>
 <body>
 <div id="main-window-container">
     <div id="main-window">
         <div id="main-window-header">
             News >> News list
         </div>
-        <br>
         <div class="news-note" th:each="newsNote : ${notes}">
-            <div class="news-note-title" th:utext="${newsNote.name}">
+            <div class="news-note-title" >
+              <b th:utext="${newsNote.name}">Name</b>
             </div>
             <div class="news-note-date" th:utext="${newsNote.date}">
-
+                11.06.2020
             </div>
             <div class="news-note-content" th:utext="${newsNote.content}">
+                content
             </div>
+            <br>
             <div class="news-note-edit-view-links">
                 <a href="">view</a>
                 <a href="">edit</a>
                 <input class="checkbox" type="checkbox"/>
             </div>
         </div>
+
     </div>
-    <button type="button" value="delete">
-        delete
+    <br>
+    <button id="delete-btn" type="button" value="delete">
+        Delete
     </button>
-</div>
-<div id="sidebar-container">
-    <aside id="sidebar">
-        <div id="sidebar-header">
-            News
-        </div>
-        <div id="sidebar-list">
-            <ul id="sidebar-links-ul">
-                <li class="sidebar-li" id="news-list-link"><a href="">News list</a></li>
-                <li class="sidebar-li" id="add-news-list-link"><a href="">Add news</a></li>
-            </ul>
-        </div>
-    </aside>
 </div>
 </body>
 </html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<header th:fragment="header">
+    <div id="page-title">
+        News management
+    </div>
+    <div id="localization-links">
+        <a href="">English</a>
+        <a href="">Russian</a>
+    </div>
+</header>
+<body>
+<div id="sidebar-container" th:fragment="sidebar">
+    <div id="sidebar">
+        <div id="sidebar-header">
+            News
+        </div>
+        <div id="sidebar-list">
+            <ul id="sidebar-links-ul">
+                <li class="sidebar-li" id="news-list-link"><a href="">News list</a></li>
+                <li class="sidebar-li" id="add-news-list-link"><a href="">Add news</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

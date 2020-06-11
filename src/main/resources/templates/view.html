@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>News manager</title>
+</head>
+<div th:replace="fragments/general.html :: header"></div>
+<div th:replace="fragments/general.html :: sidebar"></div>
+<body>
+<div id="main-window-container">
+    <div id="main-window-header">
+        News >> News view
+    </div>
+    <div id="note-item-view" th:if="${note != null}">
+        <label>
+            News title
+            <input th:utext="${note.name}" readonly>
+        </label>
+
+        <label>
+            News date
+            <input th:utext="${note.date}" readonly>
+        </label>
+        <label>
+            Brief
+            <input th:utext="${note.brief}" readonly>
+        </label>
+        <label>
+            Content
+            <input th:utext="${note.content}" readonly>
+        </label>
+        <button type="button" value="EDIT"></button>
+        <button type="button" value="DELETE"></button>
+    </div>
+    <div th:unless="${note == null}">
+        <h3>No such note</h3>
+    </div>
+</div>
+</body>
+</html>
