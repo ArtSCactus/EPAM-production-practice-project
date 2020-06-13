@@ -14,30 +14,33 @@ import java.util.Optional;
  * @version 1.0
  */
 @Component
-public class NewsNoteDao {
+public class NewsNoteDao implements INewsNoteDao {
     @Autowired
     private NewsNotesRepository repository;
 
-    public Optional<NewsNote> getById(Long id){
+    public Optional<NewsNote> fetchById(Long id){
         return repository.findById(id);
     }
 
-    public List<NewsNote> getAll(){
-        return repository.findAll();
+    public List<NewsNote> getList(){
+        return repository.findAllByOrderByDateDesc();
     }
 
     public List<NewsNote> getAllSorted(Comparator<NewsNote> comparator){
         List<NewsNote> notes = repository.findAll();
-        notes.sort(comparator
-        );
+        notes.sort(comparator);
         return notes;
     }
 
-    public void save(NewsNote note){
-        repository.save(note);
+    public NewsNote save(NewsNote note){
+       return repository.save(note);
     }
 
     public void remove(NewsNote note){
         repository.delete(note);
+    }
+
+    public void remove(List<Long> idList){
+        repository.deleteNewsNotesByIdIn(idList);
     }
 }

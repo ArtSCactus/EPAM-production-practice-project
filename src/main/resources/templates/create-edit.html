@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>News manager</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" href="../static/css/news-view.css" th:href="@{/css/news-view.css}">
+    <script type="text/javascript" src="../static/script/edit-scripts.js" th:src="@{/script/edit-scripts.js}"></script>
+</head>
+<div th:replace="fragments/general.html :: header"></div>
+<div th:replace="fragments/general.html :: sidebar"></div>
+<body>
+<div id="main-window-container">
+    <div id="main-window-header" th:utext="${'News >> '+tab}">
+        News >>
+    </div>
+    <div id="note-item-view" th:if="${note != null}">
+        <form id="note-form" th:object="${note}" action="/update" method="post">
+            <input hidden th:if="${note.id !=null}" th:field="*{id}">
+            <div class="form-field">
+                <label for="title-input" class="form-label">
+                    News title
+                </label>
+                <input id="title-input" class="form-input" name="title" th:field="*{title}">
+            </div>
+            <br>
+            <div class="form-field">
+                <label for="date-input" class="form-label">
+                    News date
+                </label>
+                <input id="date-input" type="date" class="form-input" name="date" th:field="*{date}">
+            </div>
+            <br>
+            <div class="form-field">
+                <label for="brief-textarea" class="form-label">
+                    Brief
+                </label>
+                <textarea id="brief-textarea" class="form-input" name="brief" th:field="*{brief}"></textarea>
+
+            </div>
+            <br>
+            <div class="form-field">
+                <label for="content-textarea" class="form-label">
+                    Content
+                </label>
+                <textarea id="content-textarea" class="form-input" name="content" th:field="*{content}"></textarea>
+                <br>
+            </div>
+        </form>
+        <form id="buttons-form">
+            <div id="buttons-block">
+                <button id="edit-btn">SAVE</button>
+                <button id="delete-btn" type="submit" th:formaction="${callbackUrl}" th:formmethod="get">CANCEL</button>
+            </div>
+        </form>
+
+    </div>
+    <div th:if="${note == null}">
+        <h3>No such note</h3>
+    </div>
+</div>
+</body>
+</html>

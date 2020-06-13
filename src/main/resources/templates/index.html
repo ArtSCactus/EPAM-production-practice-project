@@ -2,42 +2,44 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en" >
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="">
     <title>News manager</title>
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="news-list.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" href="../static/css/news-list.css" th:href="@{/css/news-list.css}">
+    <script type="text/javascript" src="../static/script/list-scripts.js" th:src="@{/script/list-scripts.js}"></script>
 </head>
 <div th:replace="fragments/general.html :: header">
 </div>
 <div th:replace="fragments/general.html :: sidebar"></div>
 <body>
 <div id="main-window-container">
+    <form th:action="@{/delete-multiple}" th:method="post">
     <div id="main-window">
         <div id="main-window-header">
             News >> News list
         </div>
         <div class="news-note" th:each="newsNote : ${notes}">
             <div class="news-note-title" >
-              <b th:utext="${newsNote.name}">Name</b>
+              <b th:utext="${newsNote.title}">Name</b>
             </div>
             <div class="news-note-date" th:utext="${newsNote.date}">
-                11.06.2020
             </div>
             <div class="news-note-content" th:utext="${newsNote.content}">
-                content
             </div>
             <br>
             <div class="news-note-edit-view-links">
-                <a href="">view</a>
-                <a href="">edit</a>
-                <input class="checkbox" type="checkbox"/>
+                <a th:href="${'/'+newsNote.id}">view</a>
+                <a th:href="${'/edit/'+newsNote.id+'?callback=list'}">edit</a>
+                <input class="checkbox" type="checkbox" name="delete-mark" th:value="${newsNote.id}"/>
             </div>
         </div>
 
     </div>
     <br>
-    <button id="delete-btn" type="button" value="delete">
+    <button id="delete-btn" type="submit" value="Delete">
         Delete
     </button>
+    </form>
 </div>
 </body>
 </html>

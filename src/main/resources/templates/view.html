@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html" lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="">
     <title>News manager</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" href="../static/css/news-view.css" th:href="@{/css/news-view.css}">
+    <script type="text/javascript" src="../static/script/view-scripts.js" th:src="@{/script/view-scripts.js}"></script>
 </head>
 <div th:replace="fragments/general.html :: header"></div>
 <div th:replace="fragments/general.html :: sidebar"></div>
@@ -12,27 +16,49 @@
         News >> News view
     </div>
     <div id="note-item-view" th:if="${note != null}">
-        <label>
-            News title
-            <input th:utext="${note.name}" readonly>
-        </label>
+        <input name="id" th:field="*{id}" th:attr="value=${note.id}" hidden>
+        <div class="form-field">
+            <label for="title-input" class="form-label">
+                News title
+            </label>
+            <label id="title-input" class="form-input" th:utext="${note.title}"></label>
+        </div>
+        <br>
+        <div class="form-field">
+            <label for="date-input" class="form-label">
+                News date
+            </label>
+            <label id="date-input" class="form-input" th:utext="${note.date}"></label>
 
-        <label>
-            News date
-            <input th:utext="${note.date}" readonly>
-        </label>
-        <label>
-            Brief
-            <input th:utext="${note.brief}" readonly>
-        </label>
-        <label>
-            Content
-            <input th:utext="${note.content}" readonly>
-        </label>
-        <button type="button" value="EDIT"></button>
-        <button type="button" value="DELETE"></button>
+        </div>
+        <br>
+        <div class="form-field">
+            <label for="brief-textarea" class="form-label">
+                Brief
+            </label>
+            <label id="brief-textarea" class="form-input" th:utext="${note.brief}"></label>
+
+        </div>
+        <br>
+        <div class="form-field">
+            <label for="content-textarea" class="form-label">
+                Content
+            </label>
+            <label id="content-textarea" class="form-input"
+                   th:utext="${note.content}"></label>
+            <br>
+        </div>
+        <form id="view-delete-form">
+            <button id="delete-btn" type="submit" th:formaction="${'/delete/'+note.id}" th:formmethod="delete">DELETE
+            </button>
+        </form>
+        <form id="view-edit-form" th:action="${'/edit/'+note.id}" th:method="get">
+            <input hidden name="callback" value="view">
+            <button id="edit-btn" type="submit">EDIT</button>
+        </form>
+
     </div>
-    <div th:unless="${note == null}">
+    <div th:if="${note == null}">
         <h3>No such note</h3>
     </div>
 </div>

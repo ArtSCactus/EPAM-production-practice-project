@@ -1,0 +1,61 @@
+/*
+* Created by ArtSCactus
+* 11.06.2020
+*/
+
+#edit-btn, #delete-btn{
+    display: table-column;
+}
+
+#edit-form, #delete-form{
+    display: table-column;
+}
+
+#view-edit-form, #view-delete-form{
+    display: inline-block;
+    margin-top: 30px;
+    float: right;
+}
+
+#note-item-view, #buttons-block{
+    display: inline-block;
+}
+
+.form-input{
+    margin-left: 5%;
+}
+
+.form-label{
+    width: 100px;
+    vertical-align: top;
+}
+
+
+.form-field{
+}
+
+.form-label, .form-input{
+    display: inline-block;
+}
+
+#title-input{
+    width: 45%;
+}
+#brief-textarea{
+    width: 40%;
+}
+#content-textarea{
+    width: 40%;
+}
+#note-item-view{
+    margin-left: 10%;
+    margin-top: 20px;
+}
+
+#main-window-header{
+    margin-left: 50px;
+}
+
+#buttons-form #buttons-block{
+    float: right;
+}

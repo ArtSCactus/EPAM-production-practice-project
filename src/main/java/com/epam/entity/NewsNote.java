@@ -6,16 +6,17 @@ import java.util.Objects;
 
 /**
  * @author ArtSCactus
- * @version 1.0
+ * @version 1.1
  */
 @Entity
 @Table(name = "notes", schema = "newsmanager")
 public class NewsNote {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private Long id;
-    @Column(name = "name")
-    private String name;
+    @Column(name = "title")
+    private String title;
     @Column(name="date")
     private Date date;
     @Column(name="brief")
@@ -26,19 +27,27 @@ public class NewsNote {
     public NewsNote() {
     }
 
-    public NewsNote(String name, Date date, String brief, String content) {
-        this.name = name;
+    public NewsNote(String title, Date date, String brief, String content) {
+        this.title = title;
         this.date = date;
         this.brief = brief;
         this.content = content;
     }
 
-    public String getName() {
-        return name;
+    public Long getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String name) {
+        this.title = name;
     }
 
     public Date getDate() {
@@ -70,7 +79,7 @@ public class NewsNote {
         if (this == o) return true;
         if (!(o instanceof NewsNote)) return false;
         NewsNote newsNote = (NewsNote) o;
-        return Objects.equals(getName(), newsNote.getName()) &&
+        return Objects.equals(getTitle(), newsNote.getTitle()) &&
                 Objects.equals(getDate(), newsNote.getDate()) &&
                 Objects.equals(getBrief(), newsNote.getBrief()) &&
                 Objects.equals(getContent(), newsNote.getContent());
@@ -78,6 +87,6 @@ public class NewsNote {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName(), getDate(), getBrief(), getContent());
+        return Objects.hash(getTitle(), getDate(), getBrief(), getContent());
     }
 }
