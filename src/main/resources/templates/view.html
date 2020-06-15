@@ -12,54 +12,51 @@
 <div th:replace="fragments/general.html :: sidebar"></div>
 <body>
 <div id="main-window-container">
-    <div id="main-window-header">
-        News >> News view
+    <div id="main-window-header" th:utext="#{view-main-window-header}">
     </div>
     <div id="note-item-view" th:if="${note != null}">
         <input name="id" th:field="*{id}" th:attr="value=${note.id}" hidden>
         <div class="form-field">
-            <label for="title-input" class="form-label">
-                News title
+            <label for="title-input" class="form-label" th:utext="#{view-title-label}">
             </label>
             <label id="title-input" class="form-input" th:utext="${note.title}"></label>
         </div>
         <br>
         <div class="form-field">
-            <label for="date-input" class="form-label">
-                News date
+            <label for="date-input" class="form-label" th:utext="#{view-date-label}">
             </label>
             <label id="date-input" class="form-input" th:utext="${note.date}"></label>
 
         </div>
         <br>
         <div class="form-field">
-            <label for="brief-textarea" class="form-label">
-                Brief
+            <label for="brief-textarea" class="form-label" th:utext="#{view-brief-label}">
             </label>
             <label id="brief-textarea" class="form-input" th:utext="${note.brief}"></label>
 
         </div>
         <br>
         <div class="form-field">
-            <label for="content-textarea" class="form-label">
-                Content
+            <label for="content-textarea" class="form-label" th:utext="#{view-content-label}">
             </label>
             <label id="content-textarea" class="form-input"
                    th:utext="${note.content}"></label>
             <br>
         </div>
         <form id="view-delete-form">
-            <button id="delete-btn" type="submit" th:formaction="${'/delete/'+note.id}" th:formmethod="delete">DELETE
+            <button id="delete-btn" type="submit" th:formaction="${'/delete/'+note.id}" th:formmethod="delete"
+            th:utext="#{view-delete-btn-text}">
             </button>
         </form>
         <form id="view-edit-form" th:action="${'/edit/'+note.id}" th:method="get">
             <input hidden name="callback" value="view">
-            <button id="edit-btn" type="submit">EDIT</button>
+            <button id="edit-btn" type="submit" th:utext="#{view-edit-btn-text}"></button>
         </form>
 
     </div>
+    <div id="confirm-delete-message" hidden th:utext="#{view-confirm-delete-message}"></div>
     <div th:if="${note == null}">
-        <h3>No such note</h3>
+        <h3 th:utext="#{view-not-found-message}"></h3>
     </div>
 </div>
 </body>

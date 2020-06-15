@@ -12,19 +12,44 @@
 }
 
 .news-note-content {
-    margin-top: 30px;
+    margin-top: 60px;
 }
 
 .news-note, #delete-btn {
     display: block;
 }
 
+#news-note-delimiter{
+    height: 80px;
+}
+
+.news-note-delimiter{
+    height: 80px;
+}
+
 #delete-btn {
     float: right;
     margin-left: 90%;
-    margin-top: 30px;
+    margin-bottom: 30px;
+    vertical-align: top;
 }
 
 .news-note {
     margin-top: 30px;
+}
+
+#main-window{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#main-window-header{
+    margin-top: 10px;
+}
+.empty-space{
+    height: 40px;
+}
+
+#delete-btn{
+    margin-right: 40px;
 }

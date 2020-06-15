@@ -1,7 +1,8 @@
 
 function deleteBtnClickHandler(event) {
     event.preventDefault();
-    if (confirm('Are you sure want to delete?')){
+    let message = document.getElementById("confirm-delete-message").textContent;
+    if (confirm(message)){
         let form = document.querySelector("form");
         form.action="/delete";
         form.submit();

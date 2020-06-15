@@ -5,19 +5,20 @@ import com.epam.dao.NewsNoteDao;
 import com.epam.entity.NewsNote;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Date;
-import java.time.LocalDate;
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 /**
  * @author ArtSCactus
- * @version 1.1
+ * @version 1.2
  */
 @Controller
 public class NewsNotesActionController {
@@ -63,15 +64,14 @@ public class NewsNotesActionController {
     }
 
     @RequestMapping(value="/update", method = RequestMethod.POST)
-    public String updateNote(Model model, @ModelAttribute NewsNote note){
+    public String updateNote(Model model, @Valid @ModelAttribute NewsNote note){
         note = dao.save(note);
         model.addAttribute("note", note);
         return "redirect:/"+note.getId();
     }
     @RequestMapping(value = "/edit/{?}", method = RequestMethod.GET)
-    public String editPageById(Model model, @PathVariable(name = "?") Long id, @RequestParam String callback){
+    public String editPageById(HttpServletRequest req, Model model, @PathVariable(name = "?") Long id, @Nullable @RequestParam String callback){
         Optional<NewsNote> note = dao.fetchById(id);
-        model.addAttribute("tab", "Edit news");
         model.addAttribute("note", note.get());
         model.addAttribute("callbackUrl", defineCallbackUrl(id, callback));
         return "create-edit";
@@ -85,13 +85,16 @@ public class NewsNotesActionController {
     }
 
     @RequestMapping(value="/create", method = RequestMethod.POST)
-    public String createNews(Model model, @ModelAttribute NewsNote note){
+    public String createNews(Model model, @Valid @ModelAttribute NewsNote note){
         dao.save(note);
         return "redirect:/view/"+note.getId();
     }
 
     private String defineCallbackUrl(Long id, String callbackType){
-        switch(callbackType){
+        if (callbackType==null){
+            return "/";
+        }
+            switch(callbackType){
             case "list":
                 return "/";
             case "view":

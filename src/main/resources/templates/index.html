@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en" >
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="">
-    <title>News manager</title>
+    <title th:utext="#{tab-title}"></title>
     <link rel="stylesheet" type="text/css" href="../static/css/main.css" th:href="@{/css/main.css}">
     <link rel="stylesheet" type="text/css" href="../static/css/news-list.css" th:href="@{/css/news-list.css}">
     <script type="text/javascript" src="../static/script/list-scripts.js" th:src="@{/script/list-scripts.js}"></script>
@@ -15,31 +15,35 @@
 <div id="main-window-container">
     <form th:action="@{/delete-multiple}" th:method="post">
     <div id="main-window">
-        <div id="main-window-header">
-            News >> News list
+        <div id="main-window-header" th:utext="#{list-main-window-header}">
         </div>
         <div class="news-note" th:each="newsNote : ${notes}">
-            <div class="news-note-title" >
-              <b th:utext="${newsNote.title}">Name</b>
+            <label class="news-note-title" >
+              <b th:utext="${newsNote.title}"></b>
+            </label>
+            <label class="news-note-date" th:utext="${newsNote.date}">
+            </label>
+            <br>
+            <div class="empty-space">
             </div>
-            <div class="news-note-date" th:utext="${newsNote.date}">
-            </div>
-            <div class="news-note-content" th:utext="${newsNote.content}">
-            </div>
+            <label class="news-note-content" th:utext="${newsNote.content}">
+            </label>
             <br>
             <div class="news-note-edit-view-links">
-                <a th:href="${'/'+newsNote.id}">view</a>
-                <a th:href="${'/edit/'+newsNote.id+'?callback=list'}">edit</a>
-                <input class="checkbox" type="checkbox" name="delete-mark" th:value="${newsNote.id}"/>
+                <a th:href="${'/'+newsNote.id}" th:utext="#{list-view-link}"></a>
+                <a th:href="${'/edit/'+newsNote.id+'?callback=list'}" th:utext="#{list-edit-link}"></a>
+                <input class="delete-mark" type="checkbox" name="delete-mark" th:value="${newsNote.id}"/>
             </div>
+            <div class="empty-space"></div>
         </div>
-
     </div>
     <br>
-    <button id="delete-btn" type="submit" value="Delete">
-        Delete
+    <button id="delete-btn" type="submit" value="Delete" th:utext="#{list-delete-btn-text}">
     </button>
     </form>
+    <div hidden id="list-confirm-delete-message-part-one" th:utext="#{list-confirm-delete-message-part-one}"></div>
+    <div hidden id="list-confirm-delete-message-part-two" th:utext="#{list-confirm-delete-message-part-two}"></div>
+    <div hidden id="no-items-selected-message" th:utext="#{list-no-items-selected-message}"></div>
 </div>
 </body>
 </html>

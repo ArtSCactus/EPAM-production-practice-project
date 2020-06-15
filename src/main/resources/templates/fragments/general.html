@@ -5,24 +5,22 @@
     <title>Title</title>
 </head>
 <header th:fragment="header">
-    <div id="page-title">
-        News management
+    <div id="page-title" th:utext="#{header-page-title}">
     </div>
     <div id="localization-links">
-        <a href="">English</a>
-        <a href="">Russian</a>
+        <a th:href="@{'?lang=en'}">English</a>
+        <a th:href="@{'?lang=ru'}">Russian</a>
     </div>
 </header>
 <body>
 <div id="sidebar-container" th:fragment="sidebar">
     <div id="sidebar">
-        <div id="sidebar-header">
-            News
+        <div id="sidebar-header" th:utext="#{sidebar-header-text}">
         </div>
         <div id="sidebar-list">
             <ul id="sidebar-links-ul">
-                <li class="sidebar-li" id="news-list-link"><a href="/">News list</a></li>
-                <li class="sidebar-li" id="add-news-list-link"><a href="/create">Add news</a></li>
+                <li class="sidebar-li" id="news-list-link"><a href="/" th:utext="#{sidebar-list-link}"></a></li>
+                <li class="sidebar-li" id="add-news-list-link"><a href="/create" th:utext="#{sidebar-add-news-link}"></a></li>
             </ul>
         </div>
     </div>

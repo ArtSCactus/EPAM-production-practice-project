@@ -50,10 +50,15 @@
 #note-item-view{
     margin-left: 10%;
     margin-top: 20px;
+    width: 90%
 }
 
 #main-window-header{
     margin-left: 50px;
+}
+
+#main-window-container{
+    padding:10px;
 }
 
 #buttons-form #buttons-block{

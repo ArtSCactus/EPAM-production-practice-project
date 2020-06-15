@@ -1,12 +1,14 @@
 package com.epam.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.sql.Date;
 import java.util.Objects;
 
 /**
  * @author ArtSCactus
- * @version 1.1
+ * @version 1.2
  */
 @Entity
 @Table(name = "notes", schema = "newsmanager")
@@ -15,13 +17,19 @@ public class NewsNote {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private Long id;
-    @Column(name = "title")
+    @Column(name = "title", length = 100)
+    @Pattern(regexp = "[^<>]")
+    @Size(min=1, max=100)
     private String title;
-    @Column(name="date")
+    @Column(name="date", length = 10)
     private Date date;
-    @Column(name="brief")
+    @Column(name="brief", length = 500)
+    @Pattern(regexp = "[^<>]")
+    @Size(min=1, max=500)
     private String brief;
-    @Column(name="content")
+    @Column(name="content", length = 2048)
+    @Pattern(regexp = "[^<>]")
+    @Size(min=1, max=2048)
     private String content;
 
     public NewsNote() {

@@ -1,7 +1,7 @@
 function submitSaveForm(event) {
     event.preventDefault();
-let form = document.getElementById("note-form");
-form.submit();
+    let form = document.getElementById("note-form");
+    form.submit();
 }
 
 function init() {
