@@ -12,13 +12,16 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 /**
  * @author ArtSCactus
- * @version 1.2
+ * @version 1.3
  */
 @Controller
 public class NewsNotesActionController {
@@ -79,6 +82,7 @@ public class NewsNotesActionController {
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String createPage(Model model){
         NewsNote note = new NewsNote();
+        note.setDate(Date.valueOf(LocalDate.now()));
         model.addAttribute("tab", "Add news");
         model.addAttribute("note", note);
         return "create-edit";

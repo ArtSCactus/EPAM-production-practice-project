@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${#locale}">
 <head>
     <meta charset="UTF-8">
     <title th:utext="#{tab-title}">News manager</title>
@@ -26,7 +26,8 @@
             <div class="form-field">
                 <label for="date-input" class="form-label" th:utext="#{view-date-label}">
                 </label>
-                <input id="date-input" type="date" class="form-input" name="date" th:field="*{date}" required>
+                <input id="date-input" type="date" class="form-input" name="date" th:field="*{date}" th:lang="${#locale}"
+                        required>
             </div>
             <br>
             <div class="form-field">
