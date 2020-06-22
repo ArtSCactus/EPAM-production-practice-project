@@ -46,10 +46,22 @@
 #main-window-header{
     margin-top: 10px;
 }
+
+#main-window-header-news-link, #main-window-header-unit, #right-arrows{
+    display: inline-block;
+}
+
+#main-window-header-news-link{
+    color: grey;
+}
 .empty-space{
     height: 40px;
 }
 
 #delete-btn{
     margin-right: 40px;
+}
+
+#news-note-date{
+    border-bottom: 2px solid black;
 }

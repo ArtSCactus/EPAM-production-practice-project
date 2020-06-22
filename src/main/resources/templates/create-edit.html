@@ -12,6 +12,9 @@
 <body>
 <div id="main-window-container">
     <div id="main-window-header" th:utext="#{edit-main-window-header}">
+        <a id="main-window-header-news-link" th:href="@{/}" th:utext="#{edit-main-window-header-news-link}"></a>
+        <div id="right-arrows">>></div>
+        <div id="main-window-header-unit" th:utext="#{edit-main-window-header-unit}"></div>
     </div>
     <div id="note-item-view" th:if="${note != null}">
         <form id="note-form" th:object="${note}" action="/update" method="post">

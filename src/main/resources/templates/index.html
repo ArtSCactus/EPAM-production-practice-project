@@ -15,7 +15,10 @@
 <div id="main-window-container">
     <form th:action="@{/delete-multiple}" th:method="post">
     <div id="main-window">
-        <div id="main-window-header" th:utext="#{list-main-window-header}">
+        <div id="main-window-header">
+            <a id="main-window-header-news-link" th:href="@{/}" th:utext="#{list-main-window-header-news-link}"></a>
+            <div id="right-arrows">>></div>
+            <div id="main-window-header-unit" th:utext="#{list-main-window-header-unit}"></div>
         </div>
         <div class="news-note" th:each="newsNote : ${notes}">
             <label class="news-note-title" >

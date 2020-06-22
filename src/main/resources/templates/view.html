@@ -12,7 +12,10 @@
 <div th:replace="fragments/general.html :: sidebar"></div>
 <body>
 <div id="main-window-container">
-    <div id="main-window-header" th:utext="#{view-main-window-header}">
+    <div id="main-window-header">
+        <a id="main-window-header-news-link" th:href="@{/}" th:utext="#{view-main-window-header-news-link}"></a>
+        <div id="right-arrows">>></div>
+        <div id="main-window-header-unit" th:utext="#{view-main-window-header-unit}"></div>
     </div>
     <div id="note-item-view" th:if="${note != null}">
         <input name="id" th:field="*{id}" th:attr="value=${note.id}" hidden>
@@ -26,7 +29,6 @@
             <label for="date-input" class="form-label" th:utext="#{view-date-label}">
             </label>
             <label id="date-input" class="form-input" th:utext="${note.date}"></label>
-
         </div>
         <br>
         <div class="form-field">

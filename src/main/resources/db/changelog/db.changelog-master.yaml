@@ -1,0 +1,49 @@
+databaseChangeLog:
+  - logicalFilePath: db/changelog/db.changelog-master.yaml
+  - changeSet:
+      id: 1
+      author: artemir14@gmail.com
+      comment: "Creating 'newsmanager' schema and 'notes' table"
+      preConditions:
+        onFail: CONTINUE
+        onFailMessage: "In the schema 'newsmanager' table notes already exists, skipping creation."
+        not:
+          schemaExists:
+            newsmanager
+          tableExists:
+            schemaName: newsmanager
+            tableName: notes
+      changes:
+        - sql:
+            comment: creating schema
+            sql: create schema if not exists newsmanager;
+        - createTable:
+            tableName: notes
+            schemaName: newsmanager
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: brief
+                  type: varchar(500)
+              - column:
+                  name: content
+                  type: varchar(2048)
+              - column:
+                  name: date
+                  type: date
+              - column:
+                  name: title
+                  type: varchar(100)
+        - addPrimaryKey:
+           tableName: notes
+           schemaName: newsmanager
+           columnNames: id
+        - addAutoIncrement:
+           columnDataType: bigint
+           columnName: id
+           generationType: ALWAYS
+           incrementBy: 1
+           schemaName: newsmanager
+           tableName: notes

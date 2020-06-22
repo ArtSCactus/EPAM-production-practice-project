@@ -28,6 +28,7 @@
 .form-label{
     width: 100px;
     vertical-align: top;
+    color: grey;
 }
 
 
@@ -63,4 +64,11 @@
 
 #buttons-form #buttons-block{
     float: right;
+}
+#main-window-header-news-link, #main-window-header-unit, #right-arrows{
+    display: inline-block;
+}
+
+#main-window-header-news-link{
+    color: grey;
 }

@@ -9,6 +9,7 @@ html{
     margin-left: 10%;
     margin-right: 10%;
 }
+
 #sidebar{
     background-color: darkgrey;
     width: 200px;
@@ -20,6 +21,7 @@ header{
     height: 30%;
     width: 100%;
     padding: 50px;
+    color: 	#483D8B;
 }
 #localization-links{
     float: right;
@@ -66,4 +68,12 @@ header{
 }
 #sidebar-container, #main-window-container{
     display: table-cell;
+}
+
+#main-window-header-news-link, #main-window-header-unit, #right-arrows{
+    display: inline-block;
+}
+
+#main-window-header-news-link{
+    color: grey;
 }
