@@ -6,6 +6,7 @@
     <title th:utext="#{tab-title}"></title>
     <link rel="stylesheet" type="text/css" href="../static/css/main.css" th:href="@{/css/main.css}">
     <link rel="stylesheet" type="text/css" href="../static/css/news-list.css" th:href="@{/css/news-list.css}">
+    <link rel="stylesheet" type="text/css" href="../static/css/font-awesome.min.css" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
     <script type="text/javascript" src="../static/script/list-scripts.js" th:src="@{/script/list-scripts.js}"></script>
 </head>
 <div th:replace="fragments/general.html :: header">
@@ -24,7 +25,9 @@
             <label class="news-note-title" >
               <b th:utext="${newsNote.title}"></b>
             </label>
-            <label class="news-note-date" th:utext="${newsNote.date}">
+            <label class="news-note-date" th:if="${#locale==#locale.ENGLISH}" th:utext="${#dates.format(newsNote.date, 'MM/dd/yyyy')}">
+            </label>
+            <label class="news-note-date" th:if="${#locale!=#locale.ENGLISH}" th:utext="${#dates.format(newsNote.date, 'dd/MM/yyyy')}">
             </label>
             <br>
             <div class="empty-space">
@@ -39,14 +42,15 @@
             </div>
             <div class="empty-space"></div>
         </div>
+        <br>
+        <button id="delete-btn" type="submit" value="Delete" th:if="${notes != null and !notes.isEmpty()}" th:utext="#{list-delete-btn-text}">
+        </button>
     </div>
-    <br>
-    <button id="delete-btn" type="submit" value="Delete" th:utext="#{list-delete-btn-text}">
-    </button>
     </form>
     <div hidden id="list-confirm-delete-message-part-one" th:utext="#{list-confirm-delete-message-part-one}"></div>
     <div hidden id="list-confirm-delete-message-part-two" th:utext="#{list-confirm-delete-message-part-two}"></div>
     <div hidden id="no-items-selected-message" th:utext="#{list-no-items-selected-message}"></div>
 </div>
 </body>
+<div th:replace="fragments/general.html :: footer"></div>
 </html>

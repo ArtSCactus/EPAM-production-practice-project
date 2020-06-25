@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:utext="#{tab-title}"></title>
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" href="../static/css/font-awesome.min.css"
+          th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+    <title>Error</title>
+</head>
+<div th:replace="fragments/general.html :: header">
+</div>
+<div th:replace="fragments/general.html :: sidebar"></div>
+<body>
+<div id="main-window-container">
+    <div id="main-window">
+        <div id="error-text" th:utext="#{error-massage}">
+        </div>
+    </div>
+</div>
+</body>
+<div th:replace="fragments/general.html :: footer"></div>
+</html>

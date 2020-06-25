@@ -71,4 +71,5 @@
 
 #main-window-header-news-link{
     color: grey;
+    border-bottom: 1px solid grey;
 }

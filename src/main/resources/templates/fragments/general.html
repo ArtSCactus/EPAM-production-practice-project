@@ -19,11 +19,14 @@
         </div>
         <div id="sidebar-list">
             <ul id="sidebar-links-ul">
-                <li class="sidebar-li" id="news-list-link"><a href="/" th:utext="#{sidebar-list-link}"></a></li>
-                <li class="sidebar-li" id="add-news-list-link"><a href="/create" th:utext="#{sidebar-add-news-link}"></a></li>
+                <li class="fa fa-play-circle" id="news-list-link"><a class="sidebar-links" href="/" th:utext="#{sidebar-list-link}"></a></li>
+                <li class="fa fa-play-circle" id="add-news-list-link"><a class="sidebar-links" href="/create" th:utext="#{sidebar-add-news-link}"></a></li>
             </ul>
         </div>
     </div>
 </div>
 </body>
+<footer id="footer" th:fragment="footer" th:utext="#{copyright}">
+    Copyright &#169; EPAM 2008. All rights reserved
+</footer>
 </html>

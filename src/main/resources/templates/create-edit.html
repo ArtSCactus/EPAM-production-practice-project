@@ -5,13 +5,14 @@
     <title th:utext="#{tab-title}">News manager</title>
     <link rel="stylesheet" type="text/css" href="../static/css/main.css" th:href="@{/css/main.css}">
     <link rel="stylesheet" type="text/css" href="../static/css/news-view.css" th:href="@{/css/news-view.css}">
+    <link rel="stylesheet" type="text/css" href="../static/css/font-awesome.min.css" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
     <script type="text/javascript" src="../static/script/edit-scripts.js" th:src="@{/script/edit-scripts.js}"></script>
 </head>
 <div th:replace="fragments/general.html :: header"></div>
 <div th:replace="fragments/general.html :: sidebar"></div>
 <body>
 <div id="main-window-container">
-    <div id="main-window-header" th:utext="#{edit-main-window-header}">
+    <div id="main-window-header">
         <a id="main-window-header-news-link" th:href="@{/}" th:utext="#{edit-main-window-header-news-link}"></a>
         <div id="right-arrows">>></div>
         <div id="main-window-header-unit" th:utext="#{edit-main-window-header-unit}"></div>
@@ -60,4 +61,5 @@
     </div>
 </div>
 </body>
+<div th:replace="fragments/general.html :: footer"></div>
 </html>
