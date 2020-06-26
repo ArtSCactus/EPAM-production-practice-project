@@ -5,6 +5,7 @@
 
 #edit-btn, #delete-btn{
     display: table-column;
+    margin-left: 10px;
 }
 
 #edit-form, #delete-form{
@@ -55,7 +56,7 @@
 }
 
 #main-window-header{
-    margin-left: 50px;
+    margin-left: 10px;
 }
 
 #main-window-container{
@@ -71,5 +72,15 @@
 
 #main-window-header-news-link{
     color: grey;
-    border-bottom: 1px solid grey;
+}
+#date-input{
+    margin-left: 15px;
+}
+#buttons-form{
+    margin-top: 30px;
+    margin-right: 7px;
+}
+
+#main-window{
+    min-height: 520px;
 }

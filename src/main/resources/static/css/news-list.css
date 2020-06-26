@@ -39,13 +39,12 @@
 }
 
 #main-window{
-    margin-left: 20px;
+
     margin-right: 20px;
+
+    margin-top: 12px;
 }
 
-#main-window-header{
-    margin-top: 10px;
-}
 
 #main-window-header-news-link, #main-window-header-unit, #right-arrows{
     display: inline-block;
@@ -62,6 +61,10 @@
     margin-right: 40px;
 }
 
-#news-note-date{
-    border-bottom: 2px solid black;
+.news-note-date{
+    border-bottom: 1px solid black;
+}
+
+.edit-view-links{
+    text-decoration: none;
 }

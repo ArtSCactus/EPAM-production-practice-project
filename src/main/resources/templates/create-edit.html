@@ -12,6 +12,7 @@
 <div th:replace="fragments/general.html :: sidebar"></div>
 <body>
 <div id="main-window-container">
+<div id="main-window">
     <div id="main-window-header">
         <a id="main-window-header-news-link" th:href="@{/}" th:utext="#{edit-main-window-header-news-link}"></a>
         <div id="right-arrows">>></div>
@@ -59,6 +60,7 @@
     <div th:if="${note == null}">
         <h3 th:utext="#{view-not-found-message}">No such note</h3>
     </div>
+</div>
 </div>
 </body>
 <div th:replace="fragments/general.html :: footer"></div>

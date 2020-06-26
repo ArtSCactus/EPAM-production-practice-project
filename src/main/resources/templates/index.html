@@ -36,8 +36,8 @@
             </label>
             <br>
             <div class="news-note-edit-view-links">
-                <a th:href="${'/'+newsNote.id}" th:utext="#{list-view-link}"></a>
-                <a th:href="${'/edit/'+newsNote.id+'?callback=list'}" th:utext="#{list-edit-link}"></a>
+                <a class="edit-view-links" th:href="${'/'+newsNote.id}" th:utext="#{list-view-link}"></a>
+                <a class="edit-view-links" th:href="${'/edit/'+newsNote.id+'?callback=list'}" th:utext="#{list-edit-link}"></a>
                 <input class="delete-mark" type="checkbox" name="delete-mark" th:value="${newsNote.id}"/>
             </div>
             <div class="empty-space"></div>

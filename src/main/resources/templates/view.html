@@ -13,6 +13,7 @@
 <div th:replace="fragments/general.html :: sidebar"></div>
 <body>
 <div id="main-window-container">
+    <div id="main-window">
     <div id="main-window-header">
         <a id="main-window-header-news-link" th:href="@{/}" th:utext="#{view-main-window-header-news-link}"></a>
         <div id="right-arrows">>></div>
@@ -29,7 +30,10 @@
         <div class="form-field">
             <label for="date-input" class="form-label" th:utext="#{view-date-label}">
             </label>
-            <label id="date-input" class="form-input" th:utext="${note.date}"></label>
+            <label id="date-input" th:if="${#locale==#locale.ENGLISH}" th:utext="${#dates.format(note.date, 'MM/dd/yyyy')}">
+            </label>
+            <label id="date-input" th:if="${#locale!=#locale.ENGLISH}" th:utext="${#dates.format(note.date, 'dd/MM/yyyy')}">
+            </label>
         </div>
         <br>
         <div class="form-field">
@@ -60,6 +64,7 @@
     <div id="confirm-delete-message" hidden th:utext="#{view-confirm-delete-message}"></div>
     <div th:if="${note == null}">
         <h3 th:utext="#{view-not-found-message}"></h3>
+    </div>
     </div>
 </div>
 </body>
